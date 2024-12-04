@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 require("dotenv").config();
@@ -13,7 +14,7 @@ app.use("/admin", adminRoutes);
 app.use("/shop", shopRoutes);
 
 app.use((req, res, next) => {
-  res.status(404).send(`<h1 style="text-align: center">API not found</h1>`);
+  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
 });
 
 app.listen(PORT, () => {
