@@ -1,0 +1,37 @@
+.cards {
+  display: flex;
+  gap: 30px;
+}
+
+.card {
+  max-width: 400px;
+  max-height: 600px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.474);
+  overflow: hidden;
+}
+
+.card_img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card_content {
+  padding: 20px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 10px;
+}
+
+.card button {
+  padding: 10px;
+  font-weight: 700;
+  /* color: white; */
+}
+
+.card button:hover {
+  background-color: var(--dark_green);
+  color: white;
+}
