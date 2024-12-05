@@ -1,50 +1,27 @@
+extends layout/main-layout.pug
 
+block stylesheets
+  link(rel='stylesheet' href='/css/shop.css')
 
-doctype html
-html(lang="en")
-  head
-    meta(charset='UTF-8')
-    meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    meta(name='description' content='Explore our collection of the best books available online. Add your favorites to the cart and enjoy reading.')
-    link(rel='icon' href='https://next-auth.js.org/img/logo/logo-sm.png' type='image/x-icon')
-    title Best Books Online Store | #{docTitle}
-    link(rel='stylesheet' href='/css/main.css')
-    link(rel='stylesheet' href='/css/shop.css')
-    link(rel='canonical' href='https://localhost:5000/shop')
-    // JSON-LD structured data for products (example for one product, repeat for all products)
-    script(type='application/ld+json').
-      {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "Best Books Online Store",
-        "url": "https://localhost:5000/shop"
-      }
-  body
-    //- a.skip-link(href="#main-content") Skip to main content
-    nav.nav(role="navigation", aria-label="Main Navigation")
-      ul
-        li
-          a.active(href='/shop', aria-label='Go to Home Page') Home
-        li
-          a(href='/admin/add-product', aria-label='Manage Products') Products
-    main#main-content(role="main")
-      h1 Book Store
-      if !props || props.length === 0
-        h2 No book found!
-      else
-        h2 Featured Products
-        .cards(aria-live="polite")
-          each products in props
-            .card
-              img.card_img(
-                src="/images/book.avif", 
-                alt="Cover image of the book #{products.title}", 
-                srcset="/images/book-small.avif 480w, /images/book-large.avif 800w", 
-                sizes="(max-width: 600px) 480px, 800px"
-              )
-              .card_content 
-                h3.card_title #{products.title}
-                .card_des #{products.description || 'Discover this amazing book now!'}
-                button(type="button", aria-label="Add #{products.title} to cart") Add to cart
-    footer(role="contentinfo")
-      p &copy; #{new Date().getFullYear()} Your Bookstore Name. All rights reserved.
+block content
+  main#main-content(role="main")
+    h1 Book Store
+    if !props || props.length === 0
+      h2 No book found!
+    else
+      h2 Featured Products
+      .cards(aria-live="polite")
+        each products in props
+          .card
+            img.card_img(
+              src="/images/book.avif", 
+              alt="Cover image of the book #{products.title}", 
+              srcset="/images/book-small.avif 480w, /images/book-large.avif 800w", 
+              sizes="(max-width: 600px) 480px, 800px"
+            )
+            .card_content 
+              h3.card_title #{products.title}
+              .card_des #{products.description || 'Discover this amazing book now!'}
+              button(type="button", aria-label="Add #{products.title} to cart") Add to cart
+  footer(role="contentinfo")
+    p &copy; #{new Date().getFullYear()} Your Bookstore Name. All rights reserved.

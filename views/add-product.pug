@@ -1,19 +1,9 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset='UTF-8')
-    meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    meta(name="description" content="This is nodejs application form for add product")
-    link(rel="icon" href="https://next-auth.js.org/img/logo/logo-sm.png")
-    title Add Products
-    link(rel='stylesheet' href='/css/main.css')
+extends layout/main-layout.pug
+
+block stylesheets
     link(rel='stylesheet' href='/css/product.css')
-  nav.nav
-    ul
-      li
-        a(href='/shop') Home
-      li
-        a.active(href='/admin/add-product') Products
+
+block content
   main
     div
       h2 Add Product Form

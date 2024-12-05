@@ -1,0 +1,29 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    meta(name='description' content='Explore our collection of the best books available online. Add your favorites to the cart and enjoy reading.')
+    link(rel='icon' href='https://next-auth.js.org/img/logo/logo-sm.png' type='image/x-icon')
+    title #{docTitle ? docTitle + '| Best Books Online Store' : 'No Page Found'}
+    link(rel='stylesheet' href='/css/main.css')
+    block stylesheets
+    link(rel='canonical' href='https://localhost:5000/shop')
+    // JSON-LD structured data for products (example for one product, repeat for all products)
+    script(type='application/ld+json').
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Best Books Online Store",
+        "url": "https://localhost:5000/shop"
+      }
+  body
+    //- a.skip-link(href="#main-content") Skip to main content
+    nav.nav(role="navigation", aria-label="Main Navigation")
+      ul
+        li
+          a(href='/shop', class=(path === '/shop' ? 'active' : ''), aria-label='Go to Home Page') Home
+        li
+          a(href='/admin/add-product', class=(path === '/admin/add-product' ? 'active' : ''), aria-label='Manage Products') Products
+    
+    block content
