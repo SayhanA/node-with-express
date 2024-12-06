@@ -1,18 +1,28 @@
 const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
-const expressHbs = require("express-handlebars");
+const expressHbs = require("express-handlebars").create;
 require("dotenv").config();
 
 const PORT = process.env.PORT || 8000;
 const { router: adminRoutes, products } = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
+const rootPath = require("./utils/path");
 
 const app = express();
 
-app.engine("hbs", expressHbs());
+app.engine(
+  "hbs",
+  expressHbs({
+    // layoutsDir: path.join(rootPath, "layouts"),
+    // partialsDir: path.join(rootPath, "partials"),
+    defaultLayout: false,
+    extname: "hbs",
+  }).engine
+);
+
 app.set("view engine", "hbs");
-app.set("views", "views");
+app.set("views", path.join(__dirname, "views"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));

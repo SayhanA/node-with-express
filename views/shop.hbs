@@ -1,0 +1,50 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://next-auth.js.org/img/logo/logo-sm.png"
+      type="image/x-icon"
+    />
+    <title>{{docTitle}}</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/shop.css" />
+  </head>
+  <body>
+    <nav class="nav">
+      <ul>
+        <li><a href="/shop" class="active">Home</a></li>
+        <li><a href="admin/add-product">Products</a></li>
+      </ul>
+    </nav>
+    <main>
+      {{#if isProducts}}
+        <div class="cards" aria-live="Cards Component">
+          {{#each props}}
+            <div class="card">
+              <img
+                class="card_img"
+                src="./images/book.avif 800w"
+                alt="Cover image of the book {{this.title}}"
+                srcset="./images/book.avif 800w, ./images/book.avif 800w"
+                sizes="(max-width: 600px) 480px, 800px"
+              />
+              <div class="card_content">
+                <h3 class="card_title">{{this.title}}</h3>
+                <div class="card_des">Discover this amazing book now!</div>
+                <button
+                  type="button"
+                  aria-label="Add {{this.title}} to cart"
+                >Add to cart</button>
+              </div>
+            </div>
+
+          {{/each}}
+        </div>
+      {{else}}
+        <h4>There is no product</h4>
+      {{/if}}
+    </main>
+  </body>
+</html>
